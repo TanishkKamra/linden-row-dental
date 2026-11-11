@@ -12,7 +12,11 @@ defined( 'ABSPATH' ) || exit;
 
 update_option( 'blogname', 'Linden Row Dental' );
 update_option( 'blogdescription', 'A private dental practice in Clifton, Bristol' );
-update_option( 'permalink_structure', '/%postname%/' );
+
+// Through $wp_rewrite, not update_option(), so the flush below builds rules for
+// the new structure. Otherwise unknown URLs fall through to the home page, not 404.
+global $wp_rewrite;
+$wp_rewrite->set_permalink_structure( '/%postname%/' );
 
 foreach ( array( 'hello-world' => 'post', 'sample-page' => 'page' ) as $linden_row_dental_slug => $linden_row_dental_type ) {
 	$linden_row_dental_default = get_page_by_path( $linden_row_dental_slug, OBJECT, $linden_row_dental_type );
