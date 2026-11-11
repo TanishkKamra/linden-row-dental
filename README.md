@@ -31,6 +31,8 @@ Then open http://127.0.0.1:9400. The blueprint activates the theme and runs `pla
 2. Activate it under Appearance, Themes.
 3. Create pages with the slugs `prices` and `book`, choose the "Landing page (no title)" template, and insert the "Page: full price list" and "Page: book a visit" patterns.
 
+The booking form sits in a Custom HTML block. WordPress strips form fields from that block when a user without the `unfiltered_html` capability saves the page, which includes everyone except Super Admins on multisite. On those sites, have a Super Admin save the Book page, or swap the demo form for the client's form plugin.
+
 ## Structure
 
 ```

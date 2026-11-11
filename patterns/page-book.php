@@ -33,7 +33,7 @@
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:html -->
-<form class="lr-form" data-demo-form aria-describedby="lr-form-note">
+<form class="lr-form" method="post" data-demo-form aria-describedby="lr-form-note">
 	<div class="lr-field-row">
 		<p class="lr-field"><label for="lr-name">Your name</label><input id="lr-name" name="name" type="text" autocomplete="name" required></p>
 		<p class="lr-field"><label for="lr-email">Email</label><input id="lr-email" name="email" type="email" autocomplete="email" required></p>

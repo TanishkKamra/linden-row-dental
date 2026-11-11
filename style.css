@@ -43,7 +43,7 @@ li {
 a:where(:not(.wp-element-button)) {
 	text-decoration-thickness: 1px;
 	text-underline-offset: 0.2em;
-	transition: color 0.2s ease, text-decoration-color 0.2s ease;
+	transition: color var(--wp--custom--duration--base) ease, text-decoration-color var(--wp--custom--duration--base) ease;
 }
 
 :where(a, button, input, select, textarea, summary):focus-visible {
@@ -71,7 +71,7 @@ a:where(:not(.wp-element-button)) {
 
 .wp-element-button,
 .wp-block-button__link {
-	transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+	transition: background-color var(--wp--custom--duration--base) ease, border-color var(--wp--custom--duration--base) ease, color var(--wp--custom--duration--base) ease;
 }
 
 .wp-block-button.is-style-outline > .wp-block-button__link {
@@ -91,7 +91,7 @@ a:where(:not(.wp-element-button)) {
 .wp-block-image img {
 	display: block;
 	width: 100%;
-	border-radius: 4px;
+	border-radius: var(--wp--custom--radius--small);
 	background: var(--wp--preset--color--sand);
 }
 
@@ -245,11 +245,11 @@ a:where(:not(.wp-element-button)) {
 @media (prefers-reduced-motion: no-preference) {
 	.lr-hero-copy,
 	.lr-hero-image {
-		animation: lr-rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+		animation: lr-rise var(--wp--custom--duration--rise) var(--wp--custom--ease--rise) both;
 	}
 
 	.lr-hero-image {
-		animation-delay: 0.08s;
+		animation-delay: var(--wp--custom--duration--stagger);
 	}
 }
 
@@ -481,7 +481,7 @@ a:where(:not(.wp-element-button)) {
 	font-family: var(--wp--preset--font-family--body);
 	font-size: 1.5rem;
 	line-height: 1;
-	transition: transform 0.2s ease;
+	transition: transform var(--wp--custom--duration--base) ease;
 }
 
 .lr-faq details[open] summary::after {
@@ -522,7 +522,7 @@ a:where(:not(.wp-element-button)) {
 	gap: 1.25rem;
 	padding: clamp(1.25rem, 3vw, 2.25rem);
 	border: 1px solid var(--wp--preset--color--line);
-	border-radius: 6px;
+	border-radius: var(--wp--custom--radius--base);
 	background: var(--wp--preset--color--base-2);
 }
 
@@ -557,9 +557,9 @@ a:where(:not(.wp-element-button)) {
 	width: 100%;
 	min-height: 3rem;
 	padding: 0.7rem 0.875rem;
-	border: 1px solid #8c8578;
-	border-radius: 6px;
-	background: #fff;
+	border: 1px solid var(--wp--preset--color--field);
+	border-radius: var(--wp--custom--radius--base);
+	background: var(--wp--preset--color--surface);
 	color: var(--wp--preset--color--contrast);
 	font: inherit;
 }
@@ -586,9 +586,9 @@ a:where(:not(.wp-element-button)) {
 	gap: 0.5rem;
 	min-height: 2.75rem;
 	padding: 0 0.95rem;
-	border: 1px solid #8c8578;
-	border-radius: 999px;
-	background: #fff;
+	border: 1px solid var(--wp--preset--color--field);
+	border-radius: var(--wp--custom--radius--pill);
+	background: var(--wp--preset--color--surface);
 	font-size: var(--wp--preset--font-size--small);
 	font-weight: 500;
 	cursor: pointer;
@@ -628,8 +628,15 @@ a:where(:not(.wp-element-button)) {
 	font-size: var(--wp--preset--font-size--small);
 }
 
+/* Kept in the accessibility tree while empty, so the first message is announced. */
 .lr-form-status:empty {
-	display: none;
+	position: absolute;
+	inline-size: 1px;
+	block-size: 1px;
+	overflow: hidden;
+	padding: 0;
+	border: 0;
+	clip-path: inset(50%);
 }
 
 .lr-form-status {

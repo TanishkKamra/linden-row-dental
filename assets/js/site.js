@@ -11,9 +11,11 @@ document.querySelectorAll( 'form[data-demo-form]' ).forEach( ( form ) => {
 		const fullName = String( new FormData( form ).get( 'name' ) || '' ).trim();
 		const firstName = fullName.split( /\s+/ )[ 0 ];
 
-		status.textContent =
-			`Thanks${ firstName ? `, ${ firstName }` : '' }. This is a design sample, ` +
-			'so nothing was sent. On a live site, reception would have this now.';
+		if ( status ) {
+			status.textContent =
+				`Thanks${ firstName ? `, ${ firstName }` : '' }. This is a design sample, ` +
+				'so nothing was sent. On a live site, reception would have this now.';
+		}
 		form.reset();
 	} );
 } );
