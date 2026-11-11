@@ -647,6 +647,18 @@ a:where(:not(.wp-element-button)) {
 
 /* Footer ---------------------------------------------------------------- */
 
+/* Four columns get cramped from 782 to 1279 px, so they pair up two by two.
+   !important beats core, which forces nowrap and an inline flex-basis from 782 px. */
+@media (min-width: 782px) and (max-width: 1279px) {
+	.lr-footer .wp-block-columns {
+		flex-wrap: wrap !important;
+	}
+
+	.lr-footer .wp-block-column {
+		flex-basis: calc((100% - var(--wp--preset--spacing--50)) / 2) !important;
+	}
+}
+
 .lr-footer a {
 	color: inherit;
 }
